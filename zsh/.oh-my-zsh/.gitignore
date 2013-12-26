@@ -1,0 +1,11 @@
+MIT-LICENSE.txt
+README.textile
+lib
+log
+oh-my-zsh.sh
+plugins
+templates
+themes
+tools
+custom/example
+custom/example.zsh

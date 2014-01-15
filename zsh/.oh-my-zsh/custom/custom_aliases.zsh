@@ -28,4 +28,5 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
 
+alias dh='dirs -v'
 

@@ -47,3 +47,8 @@ alias map="xargs -n1"
 alias dh='dirs -v'
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
+alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
+alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
+alias mysqlrestart='sudo /usr/local/mysql/support-files/mysql.server restart'
+

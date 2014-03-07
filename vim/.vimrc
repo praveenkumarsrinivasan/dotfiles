@@ -181,6 +181,14 @@ color wombat256mod
 " Quick quit command
 "" noremap <Leader>e :quit<CR>
 
+" =============================================================================
+" Commands
+" =============================================================================
+
+" Editing readonly files and saving them
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command Wq :execute ':W' | :q
+command WQ :Wq
 
 " =============================================================================
 " Functions

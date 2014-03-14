@@ -121,4 +121,10 @@
 [submodule "vim/.vim/bundle/nerdcommenter"]
 	path = vim/.vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git 
+[submodule "vim/.vim/bundle/vim-templates"]
+	path = vim/.vim/bundle/vim-templates
+	url = https://github.com/aperezdc/vim-template.git 
+[submodule "vim/.vim/bundle/timestamp.vim"]
+	path = vim/.vim/bundle/timestamp.vim
+    url = https://github.com/vim-scripts/timestamp.vim.git
 

@@ -1,5 +1,4 @@
 # dotfiles
-===================
 
 ## About
  
@@ -27,7 +26,6 @@ Big thanks to
 - Bash 
 
 ## Installation
------------------
 
 - **Step 1 : Get Repo**
 

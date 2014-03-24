@@ -1,5 +1,6 @@
 cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/
-sed '/bundle/d' .gitignore
+sed '/bundle/d' .gitignore >> a.out
+mv a.out .gitignore
 mkdir bundle
 cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/
 sh bin/get_bundles.sh

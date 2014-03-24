@@ -127,4 +127,7 @@
 [submodule "vim/.vim/bundle/timestamp.vim"]
 	path = vim/.vim/bundle/timestamp.vim
     url = https://github.com/vim-scripts/timestamp.vim.git
+[submodule "vim/.vim/bundle/vim-colorschemes"]
+	path = vim/.vim/bundle/vim-colorschemes
+    url = https://github.com/flazz/vim-colorschemes.git
 

@@ -35,74 +35,42 @@ Big thanks to
     
     `git clone https://github.com/praveenkumarsrinivasan/dotfiles.git`
     
-- **Step 2 : Install** `oh-my-zsh`
+- **Step 2 : Setup** `zsh` **and** `oh-my-zsh`
 
-    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/`
+    - Get `oh-my-zsh`
     
-    `git clone git://github.com/robbyrussell/oh-my-zsh.git`
+        `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/`
     
-    `mv oh-my-zsh/ .oh-my-zsh/`
-    
-    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/.oh-my-zsh/custom/`
-    
-    `ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/custom-aliases.zsh`
-    
-    `ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/custom-keybindings.zsh`    
+        `sh tools/init_oh-my-zsh.sh`
 
-- **Step 3 : Link** `.zshrc`
-
-    `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/.zshrc`
+    - Link `.zshrc`
     
-- **Step 4 : Install vim pathogen**
+        `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/.zshrc`
     
-    `mkdir -p ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/autoload`
+- **Step 3 : Setup** `vim` **and bundles**
     
-    `mkdir -p ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/bundle`
+    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/`
+            
+    - Get `pathogen`
     
-    `curl -Sso ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/autoload/pathogen.vim \ 
-    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim`
-    
-- **Step 5 : Install vim submodules**
-
-    Remove `bundle` from `~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/.gitignore` 
-
-    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/`
-    
-    `cp ~/dotfiles/praveenkumarsrinivasan/dotfiles/git/git-add-submodules.sh .`
-    
-    `sh git-add-submodules.sh`
-    
-    `rm git-add-submodules.sh`
-    
-    Add `bundle` to `~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/.gitignore` 
-    
-- **Step 6 : Install colors and spell packages**
-
-    `mkdir ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/colors`
-    
-    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/colors`
-    
-    `wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400`
+        `sh tools/init_pathogen.sh`
         
-    `mkdir ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/spell`   
+    - Get `bundles`
     
-    `wget https://github.com/derekwyatt/vim-config/blob/master/spell/en.utf-8.add`
+        `sh tools/init_bundles.sh`
+        
+    - Get `colors`
+     
+        `sh tools/init_colors.sh`
     
-    `wget https://github.com/derekwyatt/vim-config/blob/master/spell/en.utf-8.add.spl`    
-    
-    eclipse.vim, ir_black.vim, liquidcarbon.vim, navajo-night.vim, tolerable.vim, wombat.vim, wombat256.vim, wombat256mod.vim, xoria256.vim, zenburn.vim
-    
+    - Get `spell`
+     
+        `sh tools/init_spell.sh`
 
-- **Step 7 : Link** `.vimrc` **and** `.vim`
+    - Link `.vim` and `.vimrc`
 
-    `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim`    
-    
-    `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vimrc`    
-    
-    
-TODO:    
-   
-- Change custom plugin linking to .oh-my-zsh
-- Add standard colors and spell plugins
+        `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim`    
+        
+        `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vimrc`    
 
    

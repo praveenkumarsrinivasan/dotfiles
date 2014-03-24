@@ -32,38 +32,36 @@ Big thanks to
     `mkdir ~/dotfiles/praveenkumarsrinivasan && cd ~/dotfiles/praveenkumarsrinivasan/`
     
     `git clone https://github.com/praveenkumarsrinivasan/dotfiles.git`
-    
+
+    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/`    
+
 - **Step 2 : Setup** `zsh` **and** `oh-my-zsh`
 
     - Get `oh-my-zsh`
-    
-        `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/`
-    
-        `sh tools/init_oh-my-zsh.sh`
+        
+        `sh bin/init_oh-my-zsh.sh`
 
     - Link `.zshrc`
     
         `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/.zshrc`
     
 - **Step 3 : Setup** `vim` **and bundles**
-    
-    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/`
             
     - Get `pathogen`
     
-        `sh tools/init_pathogen.sh`
+        `sh bin/init_pathogen.sh`
         
     - Get `bundles`
     
-        `sh tools/init_bundles.sh`
+        `sh bin/init_bundles.sh`
         
     - Get `colors`
      
-        `sh tools/init_colors.sh`
+        `sh bin/init_colors.sh`
     
     - Get `spell`
      
-        `sh tools/init_spell.sh`
+        `sh bin/init_spell.sh`
 
     - Link `.vim` and `.vimrc`
 

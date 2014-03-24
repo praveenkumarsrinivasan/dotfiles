@@ -8,3 +8,6 @@
 [user]
 	name = Praveen Kumar Srinivasan
 	email = praveen.sxi@gmail.com
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

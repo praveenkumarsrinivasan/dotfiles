@@ -29,7 +29,7 @@ Big thanks to
 
 - **Step 1 : Get Repo**
 
-    `mkdir ~/dotfiles/praveenkumarsrinivasan && cd ~/dotfiles/praveenkumarsrinivasan/`
+    `mkdir -p ~/dotfiles/praveenkumarsrinivasan && cd ~/dotfiles/praveenkumarsrinivasan/`
     
     `git clone https://github.com/praveenkumarsrinivasan/dotfiles.git`
 

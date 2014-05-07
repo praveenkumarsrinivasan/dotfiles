@@ -31,7 +31,7 @@ alias s='du -sch'
 alias dt='cd ~/dotfiles'
 alias dl="cd ~/Downloads"
 alias dk="cd ~/Desktop"
-alias do='cd ~/Documents'
+alias doc='cd ~/Documents'
 alias sbx='cd ~/Documents/sandbox'
 
 # Utils
@@ -50,10 +50,14 @@ alias map="xargs -n1"
 # Local System 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-# MySQL
-alias mysql=/usr/local/mysql/bin/mysql
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
-alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
-alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
-alias mysqlrestart='sudo /usr/local/mysql/support-files/mysql.server restart'
+
+# Hadoop
+alias hls='hadoop fs -ls '
+alias hrm='hadoop fs -rm '
+alias hrmr='hadoop fs -rm -r '
+alias hcat='hadoop fs -cat '
+
+# Application Shortcuts
+alias nb='netbeans &'
+alias st='sublime_text &'
 

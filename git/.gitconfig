@@ -13,3 +13,5 @@
 	smudge = git-media-smudge %f
 [credential]
 	helper = osxkeychain
+[push]
+	default = simple

@@ -61,3 +61,8 @@ alias hcat='hadoop fs -cat '
 alias nb='netbeans &'
 alias st='sublime_text &'
 
+export MYSQL_HOME=/usr/local/mysql
+alias start_mysql='sudo /usr/local/mysql/support-files/mysql.server start'
+alias stop_mysql='sudo /usr/local/mysql/support-files/mysql.server stop'
+
+

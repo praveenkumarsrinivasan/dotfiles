@@ -6,21 +6,23 @@ set rtp+=~/.vim/autoload/Vundle.vim/
 call vundle#rc()
 " Plugins {{{1
 call vundle#begin()
-" Plugins {{{2
+" Plugins types {{{2
 " Core Plugins : Essential plugins for regular use {{{3
 Plugin 'davidhalter/jedi-vim'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-multiple-cursors'
 " Level-1 Plugins : Important plugins {{{3
+Plugin 'ervandew/supertab'
 Plugin 'powerline/powerline'
 Plugin 'aperezdc/vim-template'
 Plugin 'Shougo/vimshell'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'drmingdrmer/xptemplate'
 Plugin 'pangloss/vim-javascript'
+Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-fugitive'
@@ -38,6 +40,18 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/listtrans.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/betterdigraphs.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/vmath.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/dragvisuals.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/hlnext.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/colalignsimple.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/visualguide.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/persistentvisuals.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/foldsearches.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/undowarnings.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/normalized_search.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/eqalignsimple.vim'
 
 " Level 2 Plugins : Useful but might use rarely {{{3
 Plugin 'kien/ctrlp.vim'
@@ -50,6 +64,8 @@ Plugin 'vim-scripts/L9'
 Plugin 'vim-scripts/TwitVim'
 Plugin 'vim-scripts/autotags'
 Plugin 'vim-scripts/bufkill.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/autoswap_mac_linux.vim'
+Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/miv.vim'
 
 " Level 3 Plugins : Smaller and personal user generated plugins {{{3
 Plugin 'MarcWeber/vim-addon-completion'
@@ -113,6 +129,7 @@ set dictionary=~/.vim/spell/eng.utf-8.add
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
 set foldmethod=marker
+set foldenable
 " set formatprg=par
 " set hidden
 
@@ -168,6 +185,8 @@ set textwidth=0
 set display+=lastline
 " Highlight characters after column 120
 match Error /\%121v.\+/
+
+
 
 
 " Leaders {{{1
@@ -235,6 +254,14 @@ cnoremap <C-R><C-V> <C-R>=fnameescape(getline("'<")[ getpos("'<")[2]-1 : getpos(
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 " Plugins-Setting {{{1
+" Powerline/Airline {{{2
+let g:airline#extensions#tabline#enabled = 1
+" vim-markdown {{{2
+" let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_frontmatter=1
+let g:vim_markdown_math=1
+
+
 " FuzzyFinder {{{2
 nnoremap '<Space> :FufBookmarkDir<cr>
 nnoremap '.  :FufFileWithCurrentBufferDir<cr>
@@ -285,7 +312,7 @@ function! NumberToggle()
     endif
 endfunc
 
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <C-\> :call NumberToggle()<cr>
 
 
 " Tabularize {{{2

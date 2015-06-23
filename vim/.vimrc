@@ -1,141 +1,210 @@
-" Setup {{{1 
+" 
+" .vimrc
+" Author: Praveen Kumar Srinivasan
+" Email: praveen.sxi@gmail.com
+"
+
+" Setup {{{1
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+
 " Initialize Vundle
 set rtp+=~/.vim/autoload/Vundle.vim/
 call vundle#rc()
+
+" -----------------------------------------------------------------------------
+
 " Plugins {{{1
+
 call vundle#begin()
+
 " Plugins types {{{2
 " Core Plugins : Essential plugins for regular use {{{3
-Plugin 'davidhalter/jedi-vim'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/fuzzyfinder'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-multiple-cursors'
-" Level-1 Plugins : Important plugins {{{3
-Plugin 'ervandew/supertab'
-Plugin 'powerline/powerline'
+Plugin 'rstacruz/sparkup'
 Plugin 'aperezdc/vim-template'
-Plugin 'Shougo/vimshell'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'drmingdrmer/xptemplate'
-Plugin 'pangloss/vim-javascript'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'sjl/gundo.vim'
+Plugin 'powerline/powerline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'vim-scripts/EasyMotion'
-Plugin 'vim-scripts/FuzzyFinder'
-Plugin 'timestamp.vim'
-Plugin 'vim-scripts/vim-addon-json-encoding'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/listtrans.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/betterdigraphs.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/vmath.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/dragvisuals.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/hlnext.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/colalignsimple.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/visualguide.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/persistentvisuals.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/foldsearches.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/undowarnings.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/normalized_search.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/eqalignsimple.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'atweiden/vim-dragvisuals'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'timestamp.vim'
+" 3}}}
+" Level-1 Plugins : Important plugins {{{3
+Plugin 'shinokada/listtrans.vim'
+Plugin 'nixon/vim-vmath'
+Plugin 'BriceSD/hlnext'
+Plugin 'andyhunne/vim-visualguide'
+Plugin 'andyhunne/vim-foldsearches'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+Plugin 'Shougo/vimshell'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'atweiden/vim-betterdigraphs'
+"Plugin 'atweiden/vim-hudigraphs'
 
+Plugin 'pangloss/vim-javascript'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'vim-scripts/vim-addon-json-encoding'
+Plugin 'jcf/vim-latex'
+"Plugin 'lervag/vimtex'
+"Plugin 'garbas/vim-snipmate'
+"Plugin 'vim-scripts/EasyMotion'
+" 3}}}
 " Level 2 Plugins : Useful but might use rarely {{{3
 Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/vimproc'
 Plugin 'nvie/vim-flake8'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'svermeulen/vim-easyclip'
 Plugin 'vim-scripts/L9'
 Plugin 'vim-scripts/TwitVim'
 Plugin 'vim-scripts/autotags'
 Plugin 'vim-scripts/bufkill.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/autoswap_mac_linux.vim'
-Plugin 'https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup/blob/master/plugin/miv.vim'
-
+Plugin 'gioele/vim-autoswap'
+"Plugin 'tpope/vim-sensible'
+" Plugin 'svermeulen/vim-easyclip'
+" 3}}}
 " Level 3 Plugins : Smaller and personal user generated plugins {{{3
 Plugin 'MarcWeber/vim-addon-completion'
 Plugin 'derekwyatt/vim-fswitch'
 " Plugin 'derekwyatt/vim-metafuz'
+" 3}}}
 " 2}}}
+
 call vundle#end()
 
+" -----------------------------------------------------------------------------
 
 " Options {{{1
+
 " Enable VIM environment
 set nocompatible
+
+" Color Scheme to load
+set bg=dark
+colorscheme badwolf
 
 " Enable syntax highlighting
 filetype plugin indent on
 syntax enable
 
-" Color Scheme to load
-colorscheme wombat
-
-" Enable syntax highlighting
-filetype on
-filetype plugin indent on
-syntax on
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
 
 " Real programmers don't use TABs but spaces
-set expandtab
 set tabstop=4
-set softtabstop=4
 set shiftwidth=4
+set softtabstop=4
+set expandtab
+" use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
+
+" Enable indent support
+" Turn on autoindenting of blocks
 set smartindent
+" Retain indentation on next line
+set autoindent
+" copy the previous indentation on autoindenting
+set copyindent
+" insert tabs on the start of a line according to shiftwidth, not tabstop
+set smarttab
+
+" wrap at word
+set lbr
+
+" Paste Mode
+set pastetoggle=<F2>
+" <C-r>+ - os paste
 
 " reload file when changes happen in other editors
 set autoread
+set autowrite
+
+" Switch between buffers without saving
+set hidden
 
 " make backspace behave like normal again
-set backspace=2
+set backspace=indent,eol,start
 
-" Disable stupid backup and swap files - they trigger too many events
-" for file system watchers
-set nobackup
-set nowritebackup
-set noswapfile
-" set backup
-" set backupskip=/tmp/*,/private/tmp/*",*.gpg
-" set backupdir=~/.vim/tmp,/tmp
+" Backup options
+
+" Disable backup and swap files - they trigger too many events for file system watchers
+" set nobackup
+" set nowritebackup
+" set noswapfile
+
+set backup                              " enable backups
+set noswapfile                          " it's 2013, Vim.
+set undodir=~/.vim/tmp/undo//           " undo files
+set backupdir=~/.vim/tmp/backup//       " backups
+set directory=~/.vim/tmp/swap//         " swap files
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+" Make Vim able to edit crontab files again.
+set backupskip=/tmp/*,/private/tmp/*"
+
 " set browsedir=buffer
 
+" Highlight current line
+set cursorline
+
 " Improving code completion
-set completeopt=longest,menuone
+set complete=.,w,b,u,t
+set completeopt=longest,menuone,preview
 
 " make yank copy to the global system clipboard
 set clipboard=unnamed
 
-set directory=~/.vim/tmp,/tmp
+" Dictionary
+set dictionary=~/.vim/spell/en.utf-8.add.spl
+" set spelllang=eng
+
+" Encoding
 set encoding=utf-8
-set dictionary=~/.vim/spell/eng.utf-8.add
-
-
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
-set foldmethod=marker
-set foldenable
+
+set foldmethod=syntax
+" fold minimum lines
+set fml=1
+" These commands open folds
+set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+
 " set formatprg=par
-" set hidden
 
 " History Buffer Setting
 set history=1000
 set undolevels=1000
+set undofile
 
 " Make search case insensitive
 set hlsearch
@@ -143,38 +212,33 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Bind nohl
-" Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
-noremap <Leader>h :nohl<CR>
-
 " Show tab and end on line characters
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set showbreak=↪
+
+" Always show status line
+set laststatus=2
 
 " Enable mouse selection
 set mouse=a
-set noequalalways
-set nojoinspaces
 
 " show line numbers
 set number
 
-set omnifunc=syntaxcomplete#Complete
-set shiftround
-set showcmd
-set shortmess=filnxtToOI
+" all windows not same size after split or close
+set noequalalways
+
 set splitbelow
 set splitright
-set spelllang=eng
-set tags=tags;$HOME
 set timeoutlen=600
+set omnifunc=syntaxcomplete#Complete
+set nojoinspaces
+set showcmd
+set shortmess=filnxtToOI
+set tags=tags;$HOME
 set ttyfast
 set visualbell t_vb=".
-set wildmode=list:longest,list:full
 set wrapmargin=0
 set wrap
 
@@ -184,123 +248,112 @@ set textwidth=0
 " Dsplay as much as possible of the last line
 set display+=lastline
 " Highlight characters after column 120
-match Error /\%121v.\+/
+match Error /\%91v.\+/
+
+"Square up visual selections...
+set virtualedit=block
 
 
+" Wildmenu completion {{{
+" Enhance command-line completion
+set wildmenu
+" Show list of completions, and complete as much as possible, then iterate full completions
+set wildmode=list:longest,list:full
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+
+set wildignore+=*.luac                           " Lua byte code
+
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+
+set wildignore+=*.orig                           " Merge resolution files
+" }}}
 
 
-" Leaders {{{1
-let mapleader = ","
-nnoremap <leader>\ :Tagbar<cr>
-nnoremap <leader>. :cd %:h<cr>
-nnoremap <leader>c :nnoremap <leader>c 
-nnoremap <leader>d "_d
-nnoremap <leader>e :Errors<cr>
-nnoremap <leader>q :q!<cr>
-nnoremap <leader>s :set spell!<cr>
-nnoremap <leader>w :w<cr>
-nnoremap <leader>x :sign unplace *<cr>
-nnoremap <leader>z :wq!<cr>
-vnoremap <leader>d "_d
-vnoremap <leader>q <esc>:q!<cr>
+" -----------------------------------------------------------------------------
 
-" easier moving between tabs
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
+" AutoCommands {{{1
 
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+if has('autocmd')
 
-map <Leader>a ggVG  " select all
+    " Resize splits when the window is resized
+    au VimResized * :wincmd =
 
+    " Save when losing focus
+    au FocusLost * :silent! wall
 
-" Misc {{{1
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-inoremap <bar>( <esc>d(s
+    " Set foldmethod for vim {{{
+    au FileType vim setlocal foldmethod=marker
+    au bufwritepost * call VimToggleFoldOnWrite()
 
-" Type lang<C-Y> for shebang line
-inoremap <C-y> <Esc>:sil exe ".!which <cWORD>" <bar> s/^/#!/ <bar> filetype detect<cr>YpDi
-" Type 1. something<C-j> for 2.
-inoremap <C-j> <esc>:exe "norm Ypf lDB\<C-a>"<cr>A
+    function! VimToggleFoldOnWrite()
+        if &ft=='vim' 
+            setlocal foldmethod=marker 
+            call ToggleFold()
+            call ToggleFold()
+            
+            " goto the last working line
+            execute 'normal! "zv'
+        endif
+    endfunction
+    " }}}
+    " Compile Tex Files on Save {{{
+    augroup tex_autocompile
+        au!
 
-" Use :norm! so a count can be accepted
-nnoremap <C-j> :norm! o<esc>k<cr>
-nnoremap <C-k> :norm! O<esc>
+        au bufwritepre *.tex :!pdflatex -synctex=1 --interaction=nonstopmode %
+        au bufwritepost *.tex call Tex_ForwardSearchLaTeX()
+    augroup END
+    " }}}
+    " Return to the same line when reopening a file {{{
+    augroup line_return
+        au!
+        au BufReadPost *
+                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                    \     execute 'normal! g`"zvzz' |
+                    \ endif
+    augroup END
+    " }}}
+    " Show help files in a new tab, plus add a shortcut for help {{{
+    let g:help_in_tabs = 1
 
-nnoremap <C-n> :lne<cr>z.
-nnoremap <C-p> :lp<cr>z.
-nnoremap Q :exe "try <bar> tabc! <bar> catch /E784/ <bar> qa! <bar> endtry"<cr>
+    nmap <silent> H  :let g:help_in_tabs = !g:help_in_tabs<CR>
 
-" Steve Losh
-noremap H ^
-noremap L g_
-noremap! <C-a> <Home>
-noremap! <C-e> <End>
+    "Only apply to .txt files...
+    augroup HelpInTabs
+        autocmd!
+        autocmd BufEnter  *.txt   call HelpInNewTab()
+    augroup END
 
-vnoremap K k
-vnoremap & :s<cr>
+    "Only apply to help files...
+    function! HelpInNewTab ()
+        if &buftype == 'help' && g:help_in_tabs
+            "Convert the help window to a tab...
+            execute "normal \<C-W>T"
+        endif
+    endfunction
+    " }}}
+    " Edit and auto-update this config file and plugins {{{
+    augroup VimReload
+        autocmd!
+        autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    augroup END
+    " }}}
 
-command! W w !sudo tee % &>/dev/null
-command! Mks let g:session = getcwd() <bar> call Mks(g:session)
+endif
 
-" Pull last visually selected area onto command-line mode
-cnoremap <C-R><C-V> <C-R>=fnameescape(getline("'<")[ getpos("'<")[2]-1 : getpos("'>")[2]-1 ])<CR>
+" -----------------------------------------------------------------------------
 
-" Drew Neil
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-" Plugins-Setting {{{1
-" Powerline/Airline {{{2
-let g:airline#extensions#tabline#enabled = 1
-" vim-markdown {{{2
-" let g:vim_markdown_no_default_key_mappings = 1
-let g:vim_markdown_frontmatter=1
-let g:vim_markdown_math=1
-
-
-" FuzzyFinder {{{2
-nnoremap '<Space> :FufBookmarkDir<cr>
-nnoremap '.  :FufFileWithCurrentBufferDir<cr>
-nnoremap ''  :b#<cr>
-nnoremap '/  :FufFile /<cr>
-nnoremap 'a  :FufFile app/<cr>
-nnoremap 'd  :FufFile $HOME/Dropbox/<cr>
-nnoremap 'f  :FufFile<cr>
-nnoremap 'h  :FufFile $HOME/<cr>
-nnoremap 'j  :FufFile $HOME/.vim/<cr>
-nnoremap 'k  :FufBuffer<cr>
-nnoremap 'l  :FufTag<cr>
-nnoremap 'n  :FufFile $NOTES_DIR/<cr>
-nnoremap 'p  :e! ${PASSWORD_FILE}.gpg<cr>
-nnoremap 'r  :e! $HOME/.bashrc<cr><cr>
-nnoremap 's  :FufFile spec/<cr>
-nnoremap 't  :cd %:p:h<cr>:sh<cr>:cd -<cr>
-nnoremap 'v  :e! $MYVIMRC<cr><cr>
-nnoremap 'w  :FufFile $HOME/Dropbox/Tech/web/<cr>
-nnoremap 'y  :FufFile $HOME/Dropbox/Archive/Bible/<cr>
-let g:fuf_file_exclude = '\v\~$|\.(DS_Store|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
-let g:fuf_buffer_keyDelete = '<C-d>'
-" vim-surround {{{2
-let g:surround_42 = "**\r**"
-nnoremap ** :exe "norm v$hS*"<cr>
-nnoremap __ :exe "norm v$hS_"<cr>
-vmap * S*
-vmap _ S_
-vmap <leader>l <Plug>VSurround]%a(<C-r><C-p>+)<Esc>
-" syntastic {{{2
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_enable_highlighting = 0
-" YouCompleteMe {{{2
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-" Tagbar {{{2
-let g:tagbar_width = 80
-let g:tagbar_sort = 0
 " Functions {{{1
-" Toogle LineNumber Style {{{2
+
+" Toggle LineNumber Style {{{2
 function! NumberToggle()
     if(&relativenumber == 1)
         set norelativenumber
@@ -313,115 +366,277 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-\> :call NumberToggle()<cr>
+nnoremap <leader>\ :call NumberToggle()<cr>
+" 2}}}
+" Toggle FoldMarker {{{2
+let g:FoldMethod=0
 
-
-" Tabularize {{{2
-vnoremap <leader>t j:call <SID>table()<cr>
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-fun! s:align()
-    let p = '^\s*|\s.*\s|\s*$'
-    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-        Tabularize/|/l1
-        normal! 0
-        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+function! ToggleFold()
+    if g:FoldMethod == 0
+        exe 'set foldmethod=syntax'
+        let g:FoldMethod = 1
+    else
+        exe 'set foldmethod=marker'
+        let g:FoldMethod = 0
     endif
-endfun
-fun! s:table() range
-    exe "'<,'>Tab /|"
-    let hsepline= substitute(getline("."),'[^|]','-','g')
-    exe "norm! o" .  hsepline
-    exe "'<,'>s/-|/ |/g"
-    exe "'<,'>s/|-/| /g"
-    exe "'<,'>s/^| \\|\\s*|$\\||//g"
-endfun
-" NewPost {{{2
-nnoremap 'bb :FufFile $BLOG/_posts/<cr>
-nnoremap 'bn :NewPost 
-nnoremap 'bp :!cd $BLOG && rake gen_deploy && cd -<cr>
-command! -nargs=1 NewPost call NewPost("<args>")
-fun! NewPost(args)
-    let l:file = "$BLOG/_posts/" . strftime("%Y-%m-%d") . "-" . tolower(substitute(a:args, " ", "-", "g")) . ".markdown"
-    exe "e!" . l:file
-    put ='---'
-    put ='date: '''.strftime("%Y-%m-%d H:M:S").''''
-    put ='layout: post'
-    put ='slug: '.l:file
-    put ='title: '.a:args
-    put ='categories:'
-    put ='- blog'
-    put ='---'
-endfun
-" PrettyJSON {{{2
-command! -range=% JSON <line1>,<line2>call PrettyJSON()
-fun! PrettyJSON() range
-    exe a:firstline . "," . a:lastline . "!python2 -mjson.tool"
-endfun
-" Greek {{{1
-map! <C-v>GA Γ
-map! <C-v>DE Δ
-map! <C-v>TH Θ
-map! <C-v>LA Λ
-map! <C-v>XI Ξ
-map! <C-v>PI Π
-map! <C-v>SI Σ
-map! <C-v>PH Φ
-map! <C-v>PS Ψ
-map! <C-v>OM Ω
-map! <C-v>al α
-map! <C-v>be β
-map! <C-v>ga γ
-map! <C-v>de δ
-map! <C-v>ep ε
-map! <C-v>ze ζ
-map! <C-v>et η
-map! <C-v>th θ
-map! <C-v>io ι
-map! <C-v>ka κ
-map! <C-v>la λ
-map! <C-v>mu μ
-map! <C-v>xi ξ
-map! <C-v>pi π
-map! <C-v>rh ρ
-map! <C-v>si σ
-map! <C-v>ta τ
-map! <C-v>ps ψ
-map! <C-v>om ω
-map! <C-v>ph ϕ
-" Math {{{1
-map! <C-v>ll →
-map! <C-v>hh ⇌
-map! <C-v>kk ↑
-map! <C-v>jj ↓
-map! <C-v>= ∝
-map! <C-v>~ ≈
-map! <C-v>!= ≠
-map! <C-v>!> ⇸
-map! <C-v>~> ↝
-map! <C-v>>= ≥
-map! <C-v><= ≤
-map! <C-v>0  °
-map! <C-v>ce ¢
-map! <C-v>*  •
-map! <C-v>co ⌘
-" Subscript and Superscript {{{1
-inoremap <leader>1 ~1~
-inoremap <leader>2 ~2~
-inoremap <leader>3 ~3~
-inoremap <leader>4 ~4~
-inoremap <leader>5 ~5~
-inoremap <leader>6 ~6~
-inoremap <leader>7 ~7~
-inoremap <leader>8 ~8~
-inoremap <leader>9 ~9~
-inoremap <leader>== ^+^
-inoremap <leader>=2 ^2+^
-inoremap <leader>=3 ^3+^
-inoremap <leader>-- ^-^
-inoremap <leader>-2 ^2-^
-inoremap <leader>-3 ^3-^
-" Extended Text Objects {{{1
+endfunc
+
+map <leader>F :call ToggleFold()<cr>
+" 2}}}
+" Abbrevations {{{
+function! EatChar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunction
+
+function! MakeSpacelessIabbrev(from, to)
+    execute "iabbrev <silent> ".a:from." ".a:to."<C-R>=EatChar('\\s')<CR>"
+endfunction
+
+function! MakeSpacelessBufferIabbrev(from, to)
+    execute "iabbrev <silent> <buffer> ".a:from." ".a:to."<C-R>=EatChar('\\s')<CR>"
+endfunction
+" }}}
+" MS to UTC {{{
+function! ToggleUTF8 ()
+    if &fileencoding =~ 'utf-\?8'
+        set fileencoding=latin1
+        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal"'
+    else
+        set fileencoding=utf8
+        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal_unicode"'
+    endif
+endfunction
+
+let g:UnicodeTerminal = 0
+function! ToggleTerminal ()
+    if !g:UnicodeTerminal
+        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal"'
+        let g:UnicodeTerminal = 1
+        echo '[Unicode terminal]'
+    else
+        !osascript -e 'tell application "Terminal" to set current settings of front window to settings set "stdterminal_unicode"'
+        let g:UnicodeTerminal = 0
+        echo '[Latin1 terminal]'
+    endif
+endfunction
+
+nnoremap <leader>U  [Toggle UTF8]  :call ToggleUTF8()<CR><CR>:echo '[' . &fileencoding . ']'<CR>
+nnoremap <leader>UU [Toggle Unicode terminal]  :call ToggleTerminal()<CR><CR>
+" }}}
+
+" -----------------------------------------------------------------------------
+
+" Leaders {{{1
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+" clear search
+nnoremap <leader>S :nohlsearch<CR>
+
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+
+" Retab the file
+nnoremap <leader>rt :retab<CR>:w!<CR>
+
+" Black Hole Deletion
+nnoremap <leader>d "_d
+nnoremap <leader>D "_D
+vnoremap <leader>d "_d
+vnoremap <leader>p "_dP
+
+" File Editing Options
+nnoremap <leader>z :wq!<cr>
+nnoremap <leader>q :q!<cr>
+nnoremap <leader>w :w!<cr>
+
+nnoremap <leader>s :set spell!<cr>
+
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+
+" Wrap
+nnoremap <leader>W :set wrap!<cr>
+
+" Clean trailing whitespace
+nnoremap <leader>ww :%s/\s\+$//<cr>:let @/=''<CR>
+
+" easier moving between tabs
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+
+" select all
+map <Leader>a ggVG
+
+" Quickly edit/reload the vimrc file
+nnoremap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>sv :so $MYVIMRC<CR>
+
+" Open new file in new vertical split window
+noremap <leader>v :rightbelow vnew<cr>
+
+" To open a new empty buffer
+nmap <leader>T :enew<cr>
+
+" Move between Buffers
+nmap <leader>l :bnext<CR>            " Move to the next buffer
+nmap <leader>h :bprevious<CR>        " Move to the previous buffer
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+"Delete the current buffer
+nmap <leader>bd :bd<CR>
+
+" NerdTreeToggle
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+
+" Set current file's directory as the vim directory
+nnoremap <leader>c :cd %:p:h<CR>
+nnoremap <leader>r :NERDTreeFind<cr>
+
+" Reselect the text pasted to perform commands on it
+nnoremap <leader>pv V`]
+
+" Visually select last edited/pasted text
+" http://vimcasts.org/episodes/bubbling-text/
+nnoremap <leader>gp `[v`]
+
+nmap <leader>f :call ListTrans_toggle_format()<CR>
+vmap <leader>fl :call ListTrans_toggle_format('visual')<CR>
+
+" center the cursor vertically
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" -----------------------------------------------------------------------------
+
+" Mappings {{{1
+
+" Bind nohl
+" Removes highlight of your last search
+" ``<C>`` stands for ``CTRL`` and therefore ``<C-h>`` stands for ``CTRL+h``
+" noremap <C-h> :nohl<CR>
+" vnoremap <C-n> :nohl<CR>
+" inoremap <C-n> :nohl<CR>
+
+" Exit back to normal mode
+inoremap jj <ESC>
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Make BS/DEL work as expected in visual modes (i.e. delete the selected text)...
+vmap <BS> x
+
+" Steve Losh
+" noremap H ^
+" noremap L $
+vnoremap L g_
+
+
+" Drew Neil
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" gi already moves to 'last place you exited insert mode', so we'll map gI to
+" something similar: move to last change
+nnoremap gI `.
+
+" Move by display lines.
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+" Easy buffer navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Disable arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+
+" Insert Mode Completion
+inoremap <c-f> <c-x><c-f>
+inoremap <c-]> <c-x><c-]>
+inoremap <c-l> <c-x><c-l>
+
+" easier moving of code blocks
+" Try to go into visual mode (v), thenselect several lines of code here and
+" then press ``>`` several times.
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zz
+nnoremap # #zz
+
+" Same when jumping around
+nnoremap g* g*zz
+nnoremap g# g#zz
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
+
+" Search and replace shortcut
+noremap sg :%s///g<LEFT><LEFT>
+vnoremap sg :s///g<LEFT><LEFT>
+
+
+" Make arrow keys move visual blocks around
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+vmap  <expr>  <C-D>    DVB_Duplicate()
+
+" Convert to/from spaces/tabs...
+nmap <C-T>s :set   expandtab<CR>:%retab!<CR>
+nmap <C-T>t :set noexpandtab<CR>:%retab!<CR>
+
+nnoremap <F3> :GundoToggle<CR>
+
+nmap <F4> :TagbarToggle<CR>
+
+inoremap <expr>  <C-K>   BDG_GetDigraph()
+"inoremap <expr>  <C-K>   HUDG_GetDigraph()
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" easier formatting of paragraphs
+vmap Q gq
+nmap Q gqap
+
+
+" Editing readonly files and saving them
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+""cmap W!! w !sudo tee % >/dev/null
+command! Wq :execute ':W' | :q
+command! WQ :Wq
+
+" Extended Text Objects {{{
 let s:items = [ "<bar>", "\\", "/", ":", ".", "*", "_" ]
 for item in s:items
     exe "nnoremap yi".item." T".item."yt".item
@@ -436,5 +651,177 @@ endfor
 
 " Select within fold
 nnoremap viz v[zo]z$
+" }}}
 
-" }}} vim: fdm=marker
+" -----------------------------------------------------------------------------
+
+" Plugins-Setting {{{1
+
+" Powerline/Airline {{{2
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+" 2}}}
+" Jedi-Vim {{{
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "left"
+
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+" }}}
+" EasyMotion {{{
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map <leader><leader>l <Plug>(easymotion-lineforward)
+map <leader><leader>j <Plug>(easymotion-j)
+map <leader><leader>k <Plug>(easymotion-k)
+map <leader><leader>h <Plug>(easymotion-linebackward)
+
+" }}}
+" vim-templates {{{
+let g:email='praveen.sxi@gmail.com'
+let g:user='praveenkumarsrinivasan'
+ " }}}
+" vim-markdown {{{2
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_frontmatter=1
+let g:vim_markdown_math=1
+" 2}}}
+" FuzzyFinder {{{2
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 1000
+let g:fuf_mrucmd_maxItem = 400
+let g:fuf_file_exclude = '\v\~$|\.(DS_Store|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_mrufile_exclude = '\v\~$|\.(DS_Store|o|exe|dll|bak|orig|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+let g:fuf_buffer_keyDelete = '<C-d>'
+
+nnoremap ''  :b#<cr>
+nnoremap 'k  :FufBuffer<cr>
+nnoremap 'h  :FufFile $HOME/<cr>
+nnoremap 'V  :FufFile $HOME/.vim/<cr>
+nnoremap 'v  :e! $MYVIMRC<cr><cr>
+nnoremap 'z  :e! $HOME/.zshrc<cr><cr>
+nnoremap '/  :FufFile /<cr>
+nnoremap 'dd :FufFile ~/dotfiles/praveenkumarsrinivasan/dotfiles/<cr>
+nnoremap 'd  :FufFile $HOME/Dropbox/<cr>
+nnoremap 'g  :FufFile $HOME/Google Drive/<cr>
+nnoremap '.  :FufFileWithCurrentBufferDir<cr>
+nnoremap 'c  :FufFile $PWD/<cr>
+
+nnoremap 'b  :FufBookmarkDir<cr>
+nnoremap 'B  :FufBookmarkFileAdd<cr>
+
+nnoremap 'f  :FufFile<cr>
+nnoremap 'F  :FufFile **/<cr>
+nnoremap 'm  :FufMruFile<cr>
+nnoremap 'M  :FufMruCmd<cr>
+nnoremap 't  :FufTag<cr>
+
+" 2}}}
+" vim-surround {{{2
+let g:surround_42 = "**\r**"
+nnoremap ** :exe "norm v$hS*"<cr>
+nnoremap __ :exe "norm v$hS_"<cr>
+vmap * S*
+vmap _ S_
+vmap <leader>l <Plug>VSurround]%a(<C-r><C-p>+)<Esc>
+" 2}}}
+" Tabular {{{
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
+endfunction
+" }}}
+" Easy-Align {{{
+" 1. Set global g:easy_align_ignore_unmatched to zero
+let g:easy_align_ignore_unmatched = 0
+" }}}
+" vim-javascript {{{
+let javascript_enable_domhtmlcss=1
+let b:javascript=1
+" }}}
+" syntastic {{{2
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_enable_highlighting = 0
+" 2}}}
+" YouCompleteMe {{{2
+let g:ycm_global_ycm_extra_conf = '$HOME/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+
+
+" 2}}}
+" Tagbar {{{2
+let g:tagbar_width = 80
+let g:tagbar_sort = 0
+" 2}}}
+" vim-latex {{{
+
+" set default target to pdf
+let g:Tex_DefaultTargetFormat = 'pdf'
+
+let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
+let g:Tex_CompileRule_ps = 'dvips -Pwww -o $*.ps $*.dvi'
+let g:Tex_CompileRule_pspdf = 'ps2pdf $*.ps'
+let g:Tex_CompileRule_dvipdf = 'dvipdfm $*.dvi'
+let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
+
+let g:Tex_ViewRule_dvi = 'texniscope'
+let g:Tex_ViewRule_ps = 'Preview'
+let g:Tex_ViewRule_pdf = 'Skim'
+
+let g:Tex_FormatDependency_ps  = 'dvi,ps'
+let g:Tex_FormatDependency_pspdf = 'dvi,ps,pspdf'
+let g:Tex_FormatDependency_dvipdf = 'dvi,dvipdf'
+
+"let g:Tex_TreatMacViewerAsUNIX = 1
+"let g:Tex_ExecuteUNIXViewerInForeground = 1
+
+"let g:Tex_ViewRule_ps = 'open -a Skim'
+"let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
+"let g:Tex_ViewRule_dvi = 'open -a /Applications/texniscope.app'
+
+" Define dependency
+"let g:Tex_FormatDependency_pdf = 'dvi,pdf'
+let fortran_free_source=1
+
+set grepprg=grep\ -nH\ $*
+
+" The filetype of empty .tex files defaults to 'plaintex' instead of 'tex',
+" which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+
+" If you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press <C-n> you will automatically cycle through
+" all the figure labels.
+set iskeyword+=:
+
+" }}}
+
+" -----------------------------------------------------------------------------

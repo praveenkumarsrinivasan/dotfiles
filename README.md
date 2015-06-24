@@ -49,8 +49,14 @@ Big thanks to
 
 - **Step 3 : Setup** `vim` **and bundles**
 
+    - Install Vundle
+
+        `sh bin/init_vundle.sh`
+
     - Edit `.vimrc` file and install the plugins using `:PluginInstall` command
 
+    - Install the [YCM](https://github.com/Valloric/YouCompleteMe) engine
+        
     - Get `colors`
 
         `sh bin/init_colors.sh`

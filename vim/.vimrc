@@ -99,6 +99,7 @@ call vundle#end()
 set nocompatible
 
 " Color Scheme to load
+set t_Co=256
 set bg=dark
 colorscheme badwolf
 

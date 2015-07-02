@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/mysql/bin/:~/Library/Haskell/bin/:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/mysql/bin/:~/Library/Haskell/bin/:/usr/local/Cellar/macvim/7.4-73/:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions

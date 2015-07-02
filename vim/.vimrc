@@ -1,4 +1,4 @@
-" 
+"
 " .vimrc
 " Author: Praveen Kumar Srinivasan
 " Email: praveen.sxi@gmail.com
@@ -58,6 +58,8 @@ Plugin 'andyhunne/vim-foldsearches'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'Shougo/vimshell'
+Plugin 'Shougo/vimproc.vim'
+"Plugin 'Shougo/neocomplcache.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'atweiden/vim-betterdigraphs'
 "Plugin 'atweiden/vim-hudigraphs'
@@ -246,10 +248,12 @@ set wrap
 " Necessary order
 set linebreak
 set textwidth=0
-" Dsplay as much as possible of the last line
+
+" Display as much as possible of the last line
 set display+=lastline
+
 " Highlight characters after column 120
-match Error /\%91v.\+/
+" match Error /\%120v.\+/
 
 "Square up visual selections...
 set virtualedit=block
@@ -290,16 +294,26 @@ if has('autocmd')
     " Save when losing focus
     au FocusLost * :silent! wall
 
+    "Set fold method for bib files
+    au FileType bib setlocal foldmethod=indent
+
+    " Enable omni completion.
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
     " Set foldmethod for vim {{{
     au FileType vim setlocal foldmethod=marker
     au bufwritepost * call VimToggleFoldOnWrite()
 
     function! VimToggleFoldOnWrite()
-        if &ft=='vim' 
-            setlocal foldmethod=marker 
+        if &ft=='vim'
+            setlocal foldmethod=marker
             call ToggleFold()
             call ToggleFold()
-            
+
             " goto the last working line
             execute 'normal! "zv'
         endif
@@ -309,8 +323,8 @@ if has('autocmd')
     augroup tex_autocompile
         au!
 
-        au bufwritepre *.tex :!pdflatex -synctex=1 --interaction=nonstopmode %
-        au bufwritepost *.tex call Tex_ForwardSearchLaTeX()
+        au bufwritepre *.tex silent :!pdflatex -synctex=1 --interaction=nonstopmode %
+        au bufwritepost *.tex silent call Tex_ForwardSearchLaTeX()
     augroup END
     " }}}
     " Return to the same line when reopening a file {{{
@@ -822,6 +836,55 @@ let g:tex_flavor='latex'
 " type in \ref{fig: and press <C-n> you will automatically cycle through
 " all the figure labels.
 set iskeyword+=:
+
+" }}}
+" neocomplete {{{
+
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
 
 " }}}
 

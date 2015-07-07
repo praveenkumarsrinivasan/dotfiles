@@ -1,4 +1,3 @@
-
 " .vimrc
 " Author: Praveen Kumar Srinivasan
 " Email: praveen.sxi@gmail.com

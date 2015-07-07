@@ -174,6 +174,9 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
+if !isdirectory("~/.vim/tmp/yankring//")
+    call mkdir("~/.vim/tmp/yankring//", "p")
+endif
 
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*"

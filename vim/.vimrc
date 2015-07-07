@@ -1,4 +1,4 @@
-"
+
 " .vimrc
 " Author: Praveen Kumar Srinivasan
 " Email: praveen.sxi@gmail.com
@@ -68,6 +68,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/vim-addon-json-encoding'
 Plugin 'jcf/vim-latex'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 "Plugin 'lervag/vimtex'
 "Plugin 'garbas/vim-snipmate'
 "Plugin 'vim-scripts/EasyMotion'
@@ -102,8 +104,10 @@ set nocompatible
 
 " Color Scheme to load
 set t_Co=256
-set bg=dark
+set background=dark
 colorscheme badwolf
+
+set guifont=Monaco:h13
 
 " Enable syntax highlighting
 filetype plugin indent on
@@ -178,7 +182,7 @@ set backupskip=/tmp/*,/private/tmp/*"
 " set browsedir=buffer
 
 " Highlight current line
-set cursorline
+"set cursorline "redraw is slow
 
 " Improving code completion
 set complete=.,w,b,u,t
@@ -447,12 +451,6 @@ nnoremap <leader>UU [Toggle Unicode terminal]  :call ToggleTerminal()<CR><CR>
 let mapleader = ","
 let maplocalleader = "\\"
 
-" clear search
-nnoremap <leader>S :nohlsearch<CR>
-
-" map sort function to a key
-vnoremap <Leader>s :sort<CR>
-
 " Retab the file
 nnoremap <leader>rt :retab<CR>:w!<CR>
 
@@ -467,10 +465,26 @@ nnoremap <leader>z :wq!<cr>
 nnoremap <leader>q :q!<cr>
 nnoremap <leader>w :w!<cr>
 
+" clear search
+nnoremap <leader>S :nohlsearch<CR>
+
+" spell check
 nnoremap <leader>s :set spell!<cr>
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
+
+" open new window
+nmap <leader>swh :topleft  vnew<CR>
+nmap <leader>swl :botright vnew<CR>
+nmap <leader>swk :topleft  new<CR>
+nmap <leader>swj :botright new<CR>
+
+" open new buffer
+nmap <leader>sh :leftabove  vnew<CR>
+nmap <leader>sl :rightbelow vnew<CR>
+nmap <leader>sk :leftabove  new<CR>
+nmap <leader>sj :rightbelow new<CR>
 
 " Wrap
 nnoremap <leader>W :set wrap!<cr>
@@ -533,15 +547,18 @@ nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 " Mappings {{{1
 
-" Bind nohl
 " Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-h>`` stands for ``CTRL+h``
 " noremap <C-h> :nohl<CR>
 " vnoremap <C-n> :nohl<CR>
 " inoremap <C-n> :nohl<CR>
 
 " Exit back to normal mode
 inoremap jj <ESC>
+inoremap kk <ESC>
+cmap jj <esc>
+
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 " Space to toggle folds.
 nnoremap <Space> za
@@ -555,10 +572,22 @@ vmap <BS> x
 " noremap L $
 vnoremap L g_
 
-
 " Drew Neil
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" allow command line editing like emacs
+cnoremap <C-A>      <Home>
+cnoremap <C-B>      <Left>
+cnoremap <C-E>      <End>
+cnoremap <C-F>      <Right>
+cnoremap <C-N>      <End>
+cnoremap <C-P>      <Up>
+cnoremap <ESC>b     <S-Left>
+cnoremap <ESC><C-B> <S-Left>
+cnoremap <ESC>f     <S-Right>
+cnoremap <ESC><C-F> <S-Right>
+cnoremap <ESC><C-H> <C-W>
 
 " gi already moves to 'last place you exited insert mode', so we'll map gI to
 " something similar: move to last change
@@ -627,8 +656,7 @@ vmap  <expr>  <C-D>    DVB_Duplicate()
 nmap <C-T>s :set   expandtab<CR>:%retab!<CR>
 nmap <C-T>t :set noexpandtab<CR>:%retab!<CR>
 
-nnoremap <F3> :GundoToggle<CR>
-
+nnoremap <F5> :GundoToggle<CR>
 nmap <F4> :TagbarToggle<CR>
 
 inoremap <expr>  <C-K>   BDG_GetDigraph()
@@ -671,7 +699,18 @@ nnoremap viz v[zo]z$
 " -----------------------------------------------------------------------------
 
 " Plugins-Setting {{{1
+" Pandoc {{{
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown = 0
 
+let g:pandoc#command#autoexec_command = "Pandoc! pdf -Vpapersize:'a4paper' -Vdocumentclass=article -Vgeometry:margin=1in"
+
+"pandoc --toc --number-sections --latex-engine=xelatex -V fontsize=11pt -V geometry:margin=3cm -V papersize=a4paper --template=./default.latex
+map <leader>p :Pandoc! pdf  -Vpapersize:'a4paper' -Vdocumentclass=article -Vgeometry:margin=1in<cr>
+map <leader>P :Pandoc! pdf --toc --number-sections -Vpapersize:'a4paper' -Vdocumentclass=report -Vgeometry:margin=1in<cr>
+
+":Pandoc! html
+" }}}
 " Powerline/Airline {{{2
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -698,11 +737,19 @@ let g:EasyMotion_smartcase = 1
 
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2
 
 map <leader><leader>l <Plug>(easymotion-lineforward)
 map <leader><leader>j <Plug>(easymotion-j)
 map <leader><leader>k <Plug>(easymotion-k)
 map <leader><leader>h <Plug>(easymotion-linebackward)
+
+" keep cursor colum when JK motion
+let g:EasyMotion_startofline = 0
 
 " }}}
 " vim-templates {{{
@@ -840,8 +887,10 @@ set iskeyword+=:
 " }}}
 " neocomplete {{{
 
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
 " Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 0
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
@@ -873,7 +922,8 @@ function! s:my_cr_function()
   " For no inserting <CR> key.
   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
-" <TAB>: completion.
+
+" <TAB>: Completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
@@ -887,5 +937,25 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 " }}}
+" YankRing {{{
+nnoremap <F6> :YRShow<CR>
+" save yankring entries across vim instances
+let g:yankring_persist = 1
+
+let g:yankring_share_between_instances = 1
+
+" don't save duplicates
+let g:yankring_ignore_duplicate = 1
+
+" have yankring manage Vim's numbered registers ("0-"9)
+let g:yankring_manage_numbered_reg = 1
+
+let g:yankring_history_dir = '~/.vim/tmp/yankring/'
+
+" if something changes the default register without going through yankring, use
+" the default register value rather than the top item in yankring's history
+let g:yankring_paste_check_default_buffer = 1
+
+"}}}
 
 " -----------------------------------------------------------------------------

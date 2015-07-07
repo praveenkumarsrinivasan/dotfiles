@@ -22,7 +22,7 @@ alias gh='git hist'
 alias gl='git ls-tree --full-tree -r HEAD'
 alias gr='git rm `$(git ls-files --deleted)`'
 
-
+alias vi='mvim --remote-silent'
 alias v='mvim --remote-silent'
 alias p='pwd'
 alias dh='dirs -v'

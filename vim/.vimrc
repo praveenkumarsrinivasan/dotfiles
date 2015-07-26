@@ -63,6 +63,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'atweiden/vim-betterdigraphs'
 "Plugin 'atweiden/vim-hudigraphs'
 
+Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/vim-addon-json-encoding'
@@ -108,6 +109,9 @@ colorscheme badwolf
 
 set guifont=Monaco:h13
 
+" set the gui options the way I like
+set guioptions=acg
+
 " Enable syntax highlighting
 filetype plugin indent on
 syntax enable
@@ -137,6 +141,9 @@ set smarttab
 " wrap at word
 set lbr
 
+" Allow the cursor to go in to 'invalid' places
+set virtualedit=all
+
 " Paste Mode
 set pastetoggle=<F2>
 " <C-r>+ - os paste
@@ -144,6 +151,9 @@ set pastetoggle=<F2>
 " reload file when changes happen in other editors
 set autoread
 set autowrite
+
+" Don't update the display while executing macros
+set lazyredraw
 
 " Switch between buffers without saving
 set hidden
@@ -173,9 +183,6 @@ if !isdirectory(expand(&backupdir))
 endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
-endif
-if !isdirectory("~/.vim/tmp/yankring//")
-    call mkdir("~/.vim/tmp/yankring//", "p")
 endif
 
 " Make Vim able to edit crontab files again.
@@ -238,6 +245,9 @@ set number
 " all windows not same size after split or close
 set noequalalways
 
+" Don't update the display while executing macros
+set lazyredraw
+
 set splitbelow
 set splitright
 set timeoutlen=600
@@ -289,6 +299,7 @@ set wildignore+=*.orig                           " Merge resolution files
 
 
 " -----------------------------------------------------------------------------
+
 
 " AutoCommands {{{1
 
@@ -345,7 +356,7 @@ if has('autocmd')
     " Show help files in a new tab, plus add a shortcut for help {{{
     let g:help_in_tabs = 1
 
-    nmap <silent> H  :let g:help_in_tabs = !g:help_in_tabs<CR>
+    "nmap <silent> he  :let g:help_in_tabs = !g:help_in_tabs<CR>
 
     "Only apply to .txt files...
     augroup HelpInTabs
@@ -477,33 +488,21 @@ nnoremap <leader>s :set spell!<cr>
 vnoremap <Leader>s :sort<CR>
 
 " open new window
-nmap <leader>swh :topleft  vnew<CR>
-nmap <leader>swl :botright vnew<CR>
-nmap <leader>swk :topleft  new<CR>
-nmap <leader>swj :botright new<CR>
+nmap <leader>wh :topleft  vnew<CR>
+nmap <leader>wl :botright vnew<CR>
+nmap <leader>wk :topleft  new<CR>
+nmap <leader>wj :botright new<CR>
 
 " open new buffer
-nmap <leader>sh :leftabove  vnew<CR>
-nmap <leader>sl :rightbelow vnew<CR>
-nmap <leader>sk :leftabove  new<CR>
-nmap <leader>sj :rightbelow new<CR>
+nmap <leader>nh :leftabove  vnew<CR>
+nmap <leader>nl :rightbelow vnew<CR>
+nmap <leader>nk :leftabove  new<CR>
+nmap <leader>nj :rightbelow new<CR>
 
-" Wrap
-nnoremap <leader>W :set wrap!<cr>
-
-" Clean trailing whitespace
-nnoremap <leader>ww :%s/\s\+$//<cr>:let @/=''<CR>
-
-" easier moving between tabs
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
-
-" select all
-map <Leader>a ggVG
-
-" Quickly edit/reload the vimrc file
-nnoremap <leader>ev :e $MYVIMRC<CR>
-nnoremap <leader>sv :so $MYVIMRC<CR>
+nmap <leader>sh :leftabove  vs %<CR>
+nmap <leader>sl :rightbelow vs %<CR>
+nmap <leader>sk :leftabove  sb %<CR>
+nmap <leader>sj :rightbelow sb %<CR>
 
 " Open new file in new vertical split window
 noremap <leader>v :rightbelow vnew<cr>
@@ -514,6 +513,35 @@ nmap <leader>T :enew<cr>
 " Move between Buffers
 nmap <leader>l :bnext<CR>            " Move to the next buffer
 nmap <leader>h :bprevious<CR>        " Move to the previous buffer
+
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
+nnoremap <Leader>g :e#<CR> " last used buffer
+
+" Wrap
+nnoremap <leader>W :set wrap!<cr>
+
+" Clean trailing whitespace
+nnoremap <leader>ww :%s/\s\+$//<cr>:let @/=''<CR>
+
+" easier moving between tabs
+"map <Leader>n <esc>:tabprevious<CR>
+"map <Leader>m <esc>:tabnext<CR>
+
+" select all
+map <Leader>a ggVG
+
+" Quickly edit/reload the vimrc file
+nnoremap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>sv :so $MYVIMRC<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -531,9 +559,10 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 " Set current file's directory as the vim directory
 nnoremap <leader>c :cd %:p:h<CR>
 nnoremap <leader>r :NERDTreeFind<cr>
+nmap <leader>md :!mkdir -p %:p:h<CR>
 
 " Reselect the text pasted to perform commands on it
-nnoremap <leader>pv V`]
+nnoremap <leader>pv `[V`]
 
 " Visually select last edited/pasted text
 " http://vimcasts.org/episodes/bubbling-text/
@@ -544,6 +573,8 @@ vmap <leader>fl :call ListTrans_toggle_format('visual')<CR>
 
 " center the cursor vertically
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+vmap <leader>tt :! pandoc -t latex<cr>
 
 " -----------------------------------------------------------------------------
 
@@ -558,6 +589,9 @@ nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 inoremap jj <ESC>
 inoremap kk <ESC>
 cmap jj <esc>
+
+" insert file name
+imap ,fn <c-r>=expand('%:t:r')<cr>
 
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
@@ -701,6 +735,26 @@ nnoremap viz v[zo]z$
 " -----------------------------------------------------------------------------
 
 " Plugins-Setting {{{1
+
+" multiple-cursors {{{
+let g:multi_cursor_use_default_mapping=0
+
+" Map start key separately from next key
+let g:multi_cursor_start_key='<F7>'
+
+" Default mapping
+let g:multi_cursor_next_key=',m'
+let g:multi_cursor_prev_key=',mp'
+let g:multi_cursor_skip_key=',ms'
+let g:multi_cursor_quit_key='<esc>'
+
+let g:multi_cursor_start_key=',m'
+let g:multi_cursor_start_word_key='g,m'
+
+"}}}
+" cltrp {{{
+let g:ctrlp_cmd = 'CtrlPMixed'
+" }}}
 " Pandoc {{{
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown = 0
@@ -737,10 +791,10 @@ let g:jedi#rename_command = "<leader>r"
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+"map  / <Plug>(easymotion-sn)
+"map  N <Plug>(easymotion-prev)
+"map  n <Plug>(easymotion-next)
+"omap / <Plug>(easymotion-tn)
 
 nmap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2
@@ -952,7 +1006,7 @@ let g:yankring_ignore_duplicate = 1
 " have yankring manage Vim's numbered registers ("0-"9)
 let g:yankring_manage_numbered_reg = 1
 
-let g:yankring_history_dir = '~/.vim/tmp/yankring/'
+let g:yankring_history_dir='$HOME/.vim/tmp/yankring/'
 
 " if something changes the default register without going through yankring, use
 " the default register value rather than the top item in yankring's history

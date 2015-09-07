@@ -47,6 +47,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'atweiden/vim-dragvisuals'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'timestamp.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 " 3}}}
 " Level-1 Plugins : Important plugins {{{3
 Plugin 'shinokada/listtrans.vim'
@@ -69,7 +71,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/vim-addon-json-encoding'
 Plugin 'jcf/vim-latex'
 Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'vim-pandoc/vim-pandoc-syntax'
 "Plugin 'lervag/vimtex'
 "Plugin 'garbas/vim-snipmate'
 "Plugin 'vim-scripts/EasyMotion'
@@ -555,6 +557,7 @@ nmap <leader>bd :bd<CR>
 
 " NerdTreeToggle
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <leader>N :NERDTreeToggle<CR>
 
 " Set current file's directory as the vim directory
 nnoremap <leader>c :cd %:p:h<CR>
@@ -588,6 +591,8 @@ vmap <leader>tt :! pandoc -t latex<cr>
 " Exit back to normal mode
 inoremap jj <ESC>
 inoremap kk <ESC>
+inoremap lll <ESC>
+inoremap hh <ESC>
 cmap jj <esc>
 
 " insert file name
@@ -753,10 +758,13 @@ let g:multi_cursor_start_word_key='g,m'
 
 "}}}
 " cltrp {{{
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 " }}}
 " Pandoc {{{
-let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+"let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#handled = ["pandoc"]
 let g:pandoc#filetypes#pandoc_markdown = 0
 
 let g:pandoc#command#autoexec_command = "Pandoc! pdf -Vpapersize:'a4paper' -Vdocumentclass=article -Vgeometry:margin=1in"
@@ -891,8 +899,12 @@ let g:syntastic_enable_highlighting = 0
 " 2}}}
 " YouCompleteMe {{{2
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-
-
+let g:ycm_auto_trigger = 0
+" 2}}}
+" Ultisnips {{{2
+let g:UltiSnipsExpandTrigger="<leader>U"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " 2}}}
 " Tagbar {{{2
 let g:tagbar_width = 80

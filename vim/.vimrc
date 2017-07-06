@@ -29,8 +29,8 @@ Plugin 'vim-multiple-cursors'
 Plugin 'rstacruz/sparkup'
 Plugin 'aperezdc/vim-template'
 Plugin 'drmingdrmer/xptemplate'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
@@ -51,7 +51,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " 3}}}
 " Level-1 Plugins : Important plugins {{{3
-Plugin 'shinokada/listtrans.vim'
+"Plugin 'shinokada/listtrans.vim'
 Plugin 'nixon/vim-vmath'
 Plugin 'BriceSD/hlnext'
 Plugin 'andyhunne/vim-visualguide'
@@ -62,7 +62,7 @@ Plugin 'Shougo/vimshell'
 Plugin 'Shougo/vimproc.vim'
 "Plugin 'Shougo/neocomplcache.vim'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'atweiden/vim-betterdigraphs'
+"Plugin 'atweiden/vim-betterdigraphs'
 "Plugin 'atweiden/vim-hudigraphs'
 
 Plugin 'mattn/emmet-vim'
@@ -89,7 +89,7 @@ Plugin 'gioele/vim-autoswap'
 " Plugin 'svermeulen/vim-easyclip'
 " 3}}}
 " Level 3 Plugins : Smaller and personal user generated plugins {{{3
-Plugin 'MarcWeber/vim-addon-completion'
+"Plugin 'MarcWeber/vim-addon-completion'
 Plugin 'derekwyatt/vim-fswitch'
 " Plugin 'derekwyatt/vim-metafuz'
 " 3}}}
@@ -196,8 +196,8 @@ set backupskip=/tmp/*,/private/tmp/*"
 "set cursorline "redraw is slow
 
 " Improving code completion
-set complete=.,w,b,u,t
-set completeopt=longest,menuone,preview
+"set complete=.,w,b,u,t
+"set completeopt=longest,menuone,preview
 
 " make yank copy to the global system clipboard
 set clipboard=unnamed
@@ -253,7 +253,7 @@ set lazyredraw
 set splitbelow
 set splitright
 set timeoutlen=600
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 set nojoinspaces
 set showcmd
 set shortmess=filnxtToOI
@@ -317,11 +317,11 @@ if has('autocmd')
     au FileType bib setlocal foldmethod=indent
 
     " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Set foldmethod for vim {{{
     au FileType vim setlocal foldmethod=marker
@@ -955,54 +955,54 @@ set iskeyword+=:
 " }}}
 " neocomplete {{{
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 0
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-
-" <TAB>: Completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
+" " Disable AutoComplPop.
+" let g:acp_enableAtStartup = 0
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 0
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" 
+" " Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions'
+"         \ }
+" 
+" " Define keyword.
+" if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" 
+" " Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+" 
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return neocomplete#close_popup() . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" endfunction
+" 
+" " <TAB>: Completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" 
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y>  neocomplete#close_popup()
+" inoremap <expr><C-e>  neocomplete#cancel_popup()
+" 
+" " Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+" endif
 
 " }}}
 " YankRing {{{

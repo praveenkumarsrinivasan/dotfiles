@@ -22,7 +22,7 @@ alias gh='git hist'
 alias gl='git ls-tree --full-tree -r HEAD'
 alias gr='git rm `$(git ls-files --deleted)`'
 
-alias vi='mvim --remote-silent'
+alias vi='vim'
 alias p='pwd'
 alias dh='dirs -v'
 alias s='du -sch'
@@ -32,6 +32,9 @@ alias dl="cd ~/Downloads"
 alias dk="cd ~/Desktop"
 alias doc='cd ~/Documents'
 alias sbx='cd ~/Documents/sandbox'
+
+alias tg='telegram-send "$([ $? = 0 ] && echo "" || echo "error: ") $(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*tg$//'\'')"'
+
 
 # Utils
 # Find
@@ -46,21 +49,9 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias map="xargs -n1"
 
 
-# Local System 
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
 # Hadoop
 alias hls='hadoop fs -ls '
 alias hrm='hadoop fs -rm '
 alias hrmr='hadoop fs -rm -r '
 alias hcat='hadoop fs -cat '
-
-# Application Shortcuts
-alias st='sublime_text &'
-
-export MYSQL_HOME=/usr/local/mysql
-alias start_mysql='sudo /usr/local/mysql/support-files/mysql.server start'
-alias stop_mysql='sudo /usr/local/mysql/support-files/mysql.server stop'
-
 

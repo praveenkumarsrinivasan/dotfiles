@@ -729,6 +729,6 @@ let g:yankring_persist = 1
 let g:yankring_share_between_instances = 1
 let g:yankring_ignore_duplicate = 1
 let g:yankring_manage_numbered_reg = 1
-let g:yankring_history_dir='$HOME/.vim/tmp/yankring/'
+let g:yankring_history_dir='$DOTFILES_DIR/.vim/tmp/yankring/'
 let g:yankring_paste_check_default_buffer = 1
 " 2}}}

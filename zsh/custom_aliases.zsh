@@ -1,3 +1,5 @@
+# macOS-specific aliases. Symlinked into oh-my-zsh/custom/ by bin/init_oh-my-zsh.sh
+
 # GIT
 alias g="git"
 alias gs='git status'
@@ -5,7 +7,6 @@ alias ga='git add .'
 
 alias gp='git push'
 alias gl='git log'
-alias gs='git status'
 alias gd='git diff'
 alias gm='git commit -m'
 alias gma='git commit -am'
@@ -19,7 +20,7 @@ alias gta='git tag -a -m'
 alias gf='git reflog'
 alias gh='git hist'
 
-alias gl='git ls-tree --full-tree -r HEAD'
+alias glt='git ls-tree --full-tree -r HEAD'
 alias gr='git rm `$(git ls-files --deleted)`'
 
 alias vi='mvim --remote-silent'

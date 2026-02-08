@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/.oh-my-zsh
+# Set DOTFILES_DIR in your environment or update this path for your machine.
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles/dotfiles}"
+ZSH="$DOTFILES_DIR/zsh/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,12 +55,12 @@ source $ZSH/oh-my-zsh.sh
 # export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

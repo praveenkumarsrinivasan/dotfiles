@@ -1,3 +1,6 @@
-cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim/
+#!/usr/bin/env bash
+DOTFILES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+cd "$DOTFILES_DIR/vim/.vim/"
 ln -s bundle/vim-colorschemes/colors
-cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/
+cd "$DOTFILES_DIR"

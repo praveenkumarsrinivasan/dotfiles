@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 #
 # rm_DS_Store.sh
 # Copyright (C) 2015 prempraveen <prempraveen@PremPraveens-MacBook-Pro.local>

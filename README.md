@@ -25,50 +25,60 @@ Big thanks to
 - ZSH
 - Git
 - Common Scripts
-- Bash
+
+## Prerequisites
+
+- git
+- zsh
+- vim 8+
+- wget (for spell setup)
+- ctags (optional, for Tagbar plugin)
 
 ## Installation
 
-- **Step 1 : Get Repo**
+Set `DOTFILES_DIR` to wherever you clone this repo:
 
-    `mkdir -p ~/dotfiles/praveenkumarsrinivasan && cd ~/dotfiles/praveenkumarsrinivasan/`
+```bash
+export DOTFILES_DIR=~/dotfiles/dotfiles
+```
 
-    `git clone https://github.com/praveenkumarsrinivasan/dotfiles.git`
+- **Step 1 : Clone the repo**
 
-    `cd ~/dotfiles/praveenkumarsrinivasan/dotfiles/`
+    ```bash
+    git clone https://github.com/praveenkumarsrinivasan/dotfiles.git "$DOTFILES_DIR"
+    cd "$DOTFILES_DIR"
+    ```
 
-- **Step 2 : Setup** `zsh` **and** `oh-my-zsh`
+- **Step 2 : Setup zsh and oh-my-zsh**
 
-    - Get `oh-my-zsh`
+    The init script detects your platform (macOS/Linux) and symlinks the appropriate alias and environment files.
 
-        `sh bin/init_oh-my-zsh.sh`
+    ```bash
+    bash bin/init_oh-my-zsh.sh
+    ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
+    ```
 
-    - Link `.zshrc`
+- **Step 3 : Setup vim and plugins**
 
-        `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/zsh/.zshrc`
+    ```bash
+    bash bin/init_vundle.sh
+    bash bin/init_colors.sh
+    bash bin/init_spell.sh
+    ln -sf "$DOTFILES_DIR/vim/.vim" ~/.vim
+    ln -sf "$DOTFILES_DIR/vim/.vimrc" ~/.vimrc
+    vim +PluginInstall +qall
+    ```
 
-- **Step 3 : Setup** `vim` **and bundles**
+- **Step 4 : Setup git**
 
-    - Install Vundle
+    ```bash
+    ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
+    ln -sf "$DOTFILES_DIR/git/.gitignore_global" ~/.gitignore_global
+    ```
 
-        `sh bin/init_vundle.sh`
+## Platform Notes
 
-    - Edit `.vimrc` file and install the plugins using `:PluginInstall` command
+- **macOS**: Uses `custom_aliases.zsh` (includes `mvim`, `afk`, MySQL shortcuts) and `custom_env.zsh`
+- **Linux**: Uses `custom_aliases_unix.zsh` (includes `telegram-send` integration) and `custom_env_unix.zsh`
 
-    - Install the [YCM](https://github.com/Valloric/YouCompleteMe) engine
-        
-    - Get `colors`
-
-        `sh bin/init_colors.sh`
-
-    - Get `spell`
-
-        `sh bin/init_spell.sh`
-
-    - Link `.vim` and `.vimrc`
-
-        `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vim`
-
-        `cd ~ && ln -s ~/dotfiles/praveenkumarsrinivasan/dotfiles/vim/.vimrc`
-
-
+The `bin/init_oh-my-zsh.sh` script handles this automatically based on `uname`.

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -e
 
 git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
@@ -7,4 +8,3 @@ git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
         url=$(git config -f .gitmodules --get "$url_key")
         git submodule rm $path
     done
-

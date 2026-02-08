@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Install Vundle
+# Install Pathogen (legacy -- .vimrc now uses Vundle)
 DOTFILES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 cd "$DOTFILES_DIR/vim/.vim/"
 mkdir -p autoload
-cd autoload
-git clone https://github.com/gmarik/Vundle.vim.git
+curl -LSso autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cd "$DOTFILES_DIR"

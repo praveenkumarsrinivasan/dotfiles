@@ -38,13 +38,13 @@ Big thanks to
 
 Set `DOTFILES_DIR` to wherever you clone this repo:
 
-```bash
-export DOTFILES_DIR=~/dotfiles/dotfiles
+```sh
+export DOTFILES_DIR=~/dotfiles/dotfiles_pks
 ```
 
 - **Step 1 : Clone the repo**
 
-    ```bash
+    ```sh
     git clone https://github.com/praveenkumarsrinivasan/dotfiles.git "$DOTFILES_DIR"
     cd "$DOTFILES_DIR"
     ```
@@ -53,17 +53,17 @@ export DOTFILES_DIR=~/dotfiles/dotfiles
 
     The init script detects your platform (macOS/Linux) and symlinks the appropriate alias and environment files.
 
-    ```bash
-    bash bin/init_oh-my-zsh.sh
+    ```sh
+    sh bin/init_oh-my-zsh.sh
     ln -sf "$DOTFILES_DIR/zsh/.zshrc" ~/.zshrc
     ```
 
 - **Step 3 : Setup vim and plugins**
 
-    ```bash
-    bash bin/init_vundle.sh
-    bash bin/init_colors.sh
-    bash bin/init_spell.sh
+    ```sh
+    sh bin/init_vundle.sh
+    sh bin/init_colors.sh
+    sh bin/init_spell.sh
     ln -sf "$DOTFILES_DIR/vim/.vim" ~/.vim
     ln -sf "$DOTFILES_DIR/vim/.vimrc" ~/.vimrc
     vim +PluginInstall +qall
@@ -71,7 +71,7 @@ export DOTFILES_DIR=~/dotfiles/dotfiles
 
 - **Step 4 : Setup git**
 
-    ```bash
+    ```sh
     ln -sf "$DOTFILES_DIR/git/.gitconfig" ~/.gitconfig
     ln -sf "$DOTFILES_DIR/git/.gitignore_global" ~/.gitignore_global
     ```

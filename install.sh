@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 set -e
 
-DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+DOTFILES_DIR=~/dotfiles/dotfiles_pks
 
 echo "Installing dotfiles from $DOTFILES_DIR"
 

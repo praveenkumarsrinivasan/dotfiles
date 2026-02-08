@@ -40,7 +40,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'vim-scripts/YankRing.vim'
 " 2}}}
 " Completion & Snippets {{{2
 Plugin 'ervandew/supertab'
@@ -720,15 +719,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Wide sidebar (80 cols) with tags in source order rather than sorted.
 let g:tagbar_width = 80
 let g:tagbar_sort = 0
-" 2}}}
-
-" YankRing {{{2
-" Persistent, shared yank history with duplicate filtering.
-nnoremap <F6> :YRShow<CR>
-let g:yankring_persist = 1
-let g:yankring_share_between_instances = 1
-let g:yankring_ignore_duplicate = 1
-let g:yankring_manage_numbered_reg = 1
-let g:yankring_history_dir='$DOTFILES_DIR/.vim/tmp/yankring/'
-let g:yankring_paste_check_default_buffer = 1
 " 2}}}

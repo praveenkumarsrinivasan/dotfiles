@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-dig +short txt ${1}.wp.dg.cx

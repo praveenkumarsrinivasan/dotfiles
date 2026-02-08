@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DOTFILES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+DOTFILES_DIR=~/dotfiles/dotfiles_pks
 
 cd "$DOTFILES_DIR/vim/.vim/"
 mkdir -p spell

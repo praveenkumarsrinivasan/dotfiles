@@ -82,3 +82,4 @@ export DOTFILES_DIR=~/dotfiles/dotfiles_pks
 - **Linux**: Uses `custom_aliases_unix.zsh` (includes `telegram-send` integration) and `custom_env_unix.zsh`
 
 The `bin/init_oh-my-zsh.sh` script handles this automatically based on `uname`.
+

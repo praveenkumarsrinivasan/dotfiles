@@ -44,8 +44,6 @@ Plugin 'junegunn/vim-easy-align'
 " Completion & Snippets {{{2
 Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 " 2}}}
 " Syntax & Linting {{{2
 Plugin 'scrooloose/syntastic'
@@ -708,15 +706,10 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_enable_highlighting = 0
 " 2}}}
 
-" UltiSnips {{{2
-" Snippet expansion and jump triggers to avoid conflicts with other plugins.
-let g:UltiSnipsExpandTrigger="<leader>U"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" 2}}}
 
 " Tagbar {{{2
 " Wide sidebar (80 cols) with tags in source order rather than sorted.
 let g:tagbar_width = 80
 let g:tagbar_sort = 0
 " 2}}}
+"

@@ -1,7 +1,5 @@
 # macOS-specific aliases
 
-alias vi='mvim --remote-silent'
-
 # Navigation
 alias dt='cd ~/dotfiles'
 alias dl='cd ~/Downloads'

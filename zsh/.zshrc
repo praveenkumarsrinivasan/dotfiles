@@ -4,7 +4,9 @@ DOTFILES_DIR=~/dotfiles/dotfiles_pks
 
 ZSH="$DOTFILES_DIR/zsh/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git)
@@ -13,3 +15,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
+export PATH=$HOME/.local/bin:$PATH
